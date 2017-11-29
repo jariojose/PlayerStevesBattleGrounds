@@ -2,4 +2,5 @@ main: org.dragonet.bukkit.psbg.PlayerStevesBattleGrounds
 version: 1.0
 name: PlayerStevesBattleGrounds
 author: DefinitlyEvil
-commands:
+load: STARTUP
+commands: {}
