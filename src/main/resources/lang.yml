@@ -1,0 +1,6 @@
+
+messages:
+  server-full: "\u00a7cServer is full! (%d players)"
+  join:
+    wait: "\u00a77[\u00a7d\u00a7lPSBG\u00a77] \u00a7e%s joined (%d/%d) \u00a72minimum %d required"
+    game: ""

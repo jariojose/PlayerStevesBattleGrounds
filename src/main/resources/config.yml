@@ -1,0 +1,17 @@
+
+# player requirements
+min-players: 15
+max-players: 24
+
+wait-time:
+  # seconds when not full
+  normal: 120
+  # set start timer to this if server goes full
+  full: 20
+
+locations:
+  wait-spawn:
+    world: world
+    x: 0.0
+    y: 128.0
+    z: 0.0
