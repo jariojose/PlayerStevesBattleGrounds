@@ -1,6 +1,14 @@
 
+wait-bar: "\u00a7e\u00a7lPlayer Steve's Battlegrounds \u00a77(\u00a7a%d\u00a77/\u00a72%d\u00a77)"
+time-bar: "\u00a7bstarting in \u00a7e%d \u00a7bseconds... "
+
+prefix: "\u00a77[\u00a7d\u00a7lPSBG\u00a77]"
+
 messages:
-  server-full: "\u00a7cServer is full! (%d players)"
+  server-full: "<PREFIX> \u00a7cServer is full! (%d players)"
   join:
-    wait: "\u00a77[\u00a7d\u00a7lPSBG\u00a77] \u00a7e%s joined (%d/%d) \u00a72minimum %d required"
+    wait: "<PREFIX> \u00a7e%s joined (%d/%d) \u00a72minimum %d required"
     game: ""
+  start:
+    not-enough-players: "<PREFIX> \u00a7cNot enough players, should at least be \u00a7e%d\u00a7c! "
+    begin: "<PREFIX> \u00a7bBoarding the transportation plane.. dropping in 5 seconds... "

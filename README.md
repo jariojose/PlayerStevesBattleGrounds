@@ -5,5 +5,6 @@ A Minecraft implementation of Player Unknown's Battlegrounds.
 
 ## Dependencies
 - requires `LegendGuns`
+- requires `Vehicles`
 - requires `ProtocolLib`
 - requires `MenuAPI`

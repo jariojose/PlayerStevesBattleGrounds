@@ -13,7 +13,7 @@ public final class Lang {
     public static YamlConfiguration lang;
 
     public static String build(String path, Object... args) {
-        return String.format(lang.getString(path), args);
+        return String.format(lang.getString(path).replace("<PREFIX>", lang.getString("prefix")), args);
     }
 
     public static List<String> getStringList(String path) {
@@ -22,7 +22,7 @@ public final class Lang {
 
     public static void sendMessage(Object sender, String path, Object... args) {
         if(!CommandSender.class.isAssignableFrom(sender.getClass())) return;
-        ((CommandSender)sender).sendMessage(build("prefix") + " " + build(path, args));
+        ((CommandSender)sender).sendMessage(build(path, args));
     }
 
     public static void sendMessageList(Object sender, String path) {
