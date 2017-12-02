@@ -22,6 +22,13 @@ battles:
     world: world
     center-x: 0.0
     center-z: 0.0
+    parachute-type: PC1
+    # how much time maximumly can it lasts, in seconds
+    time: 1200
+    spawn:
+      center-x: 0.0
+      center-z: 0.0
+      radius: 8.0
     safe-zone:
       initial-size: 16
       # how many ticks to shrink the safe zone?

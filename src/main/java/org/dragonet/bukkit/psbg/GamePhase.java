@@ -7,6 +7,8 @@ public enum GamePhase {
 
     WAIT,
 
-    PLAY
+    PLAY,
+
+    ENDED
 
 }

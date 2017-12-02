@@ -17,6 +17,11 @@ public class ShrinkBorderTask extends ManagedTask {
     }
 
     @Override
+    public void start() {
+
+    }
+
+    @Override
     public void run() {
 
     }

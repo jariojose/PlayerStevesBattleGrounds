@@ -1,15 +1,11 @@
 package org.dragonet.bukkit.psbg;
 
-import org.bukkit.World;
-import org.bukkit.WorldBorder;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.dragonet.bukkit.psbg.listeners.PlayerListener;
 import org.dragonet.bukkit.psbg.listeners.StaticWorldListener;
 import org.dragonet.bukkit.psbg.tasks.CountDownProcessor;
-import org.dragonet.bukkit.psbg.utils.InventoryUtils;
 import org.dragonet.bukkit.psbg.utils.Lang;
 
 /**
@@ -56,26 +52,21 @@ public class PlayerStevesBattleGrounds extends JavaPlugin {
 
         // starts the match, all player should have NORMAL tag
 
-        getServer().getOnlinePlayers().forEach(c -> {
-            InventoryUtils.clearInventory(c.getInventory());
-            c.playSound(c.getLocation(), "psbg.battle-begin", 1f, 1f);
-            c.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,
-                    20*10,
-                    1,
-                    true,
-                    false), true);
-            Lang.sendMessage(c, "messages.start.begin");
-        });
-
-        World w = getServer().getWorld(config.getString("battle-world.world"));
-        WorldBorder border = w.getWorldBorder();
-        border.setCenter(
-                config.getInt("battle-world.center-x"),
-                config.getInt("battle-world.center-z")
-        );
-
         battles = new Battles(this);
         battles.startBattles();
+    }
+
+    public int countNormalPlayers() {
+        int c = 0;
+        for(Player p : getServer().getOnlinePlayers()) {
+            if(PlayerTagMetadata.getTag(p) == PlayerTag.NORMAL) c++;
+        }
+        return c;
+    }
+
+    public void setEndPhase() {
+        if(!phase.equals(GamePhase.PLAY)) throw new IllegalStateException();
+        phase = GamePhase.ENDED;
     }
 
     public GamePhase getPhase() {

@@ -1,11 +1,24 @@
 
-wait-bar: "\u00a7e\u00a7lPlayer Steve's Battlegrounds \u00a77(\u00a7a%d\u00a77/\u00a72%d\u00a77)"
-time-bar: "\u00a7bstarting in \u00a7e%d \u00a7bseconds... "
+bars:
+  wait:
+    line1: "\u00a7e\u00a7lPlayer Steve's Battlegrounds \u00a77(\u00a7a%d\u00a77/\u00a72%d\u00a77)"
+    line2: "\u00a7bstarting in \u00a7e%d \u00a7bseconds... "
+  game:
+    line1: "\u00a7e\u00a7lPlayer Steve's Battlegrounds \u00a77(\u00a7c%d \u00a7dplayers left\u00a77)"
+    line2: "\u00a72time left: \u00a7e%s"
 
 prefix: "\u00a77[\u00a7d\u00a7lPSBG\u00a77]"
 
+scoreboard:
+  wait:
+    title: "\u00a7b==== \u00a7e\u00a7lPSBG \u00a7b===="
+    battles: "\u00a7aBattles played: "
+    wins: "\u00a7aWins: "
+    kills: "\u00a7aKills: "
+
 messages:
   server-full: "<PREFIX> \u00a7cServer is full! (%d players)"
+  server-reloading: "<PREFIX> \u00a7cServer reloading... "
   join:
     wait: "<PREFIX> \u00a7e%s joined (%d/%d) \u00a72minimum %d required"
     game: ""

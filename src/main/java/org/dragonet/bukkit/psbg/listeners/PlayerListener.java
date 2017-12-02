@@ -7,6 +7,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 import org.dragonet.bukkit.psbg.GamePhase;
 import org.dragonet.bukkit.psbg.PlayerStevesBattleGrounds;
 import org.dragonet.bukkit.psbg.PlayerTag;
@@ -58,11 +62,40 @@ public class PlayerListener implements Listener {
                 InventoryUtils.clearInventory(e.getPlayer().getInventory());
                 e.getPlayer().setMetadata(PlayerStevesBattleGrounds.PLAYER_TAG_METADATA_KEY, new FixedMetadataValue(plugin, new PlayerTagMetadata(PlayerTag.NORMAL)));
                 e.getPlayer().teleport(locationWaitSpawn);
+
+                plugin.getServer().getScheduler().runTask(plugin, () -> {
+                    Scoreboard sb = plugin.getServer().getScoreboardManager().getNewScoreboard();
+                    Objective obj = sb.registerNewObjective("TITLE", "");
+                    obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+                    obj.setDisplayName(Lang.build("scoreboard.wait.title"));
+                    Team t = sb.registerNewTeam("TEAM");
+                    {
+                        String label = Lang.build("scoreboard.wait.battles");
+                        t.addEntry(label);
+                        obj.getScore(label).setScore(0);
+                    }
+                    {
+                        String label = Lang.build("scoreboard.wait.wins");
+                        t.addEntry(label);
+                        obj.getScore(label).setScore(0);
+                    }
+                    {
+                        String label = Lang.build("scoreboard.wait.kills");
+                        t.addEntry(label);
+                        obj.getScore(label).setScore(0);
+                    }
+                    // TODO: update these values
+                    // ...
+                    e.getPlayer().setScoreboard(sb);
+                });
             }
-        } else {
+        } else if(plugin.getPhase().equals(GamePhase.PLAY)) {
             // spectate
             e.getPlayer().setMetadata(PlayerStevesBattleGrounds.PLAYER_TAG_METADATA_KEY, new FixedMetadataValue(plugin, new PlayerTagMetadata(PlayerTag.SPECTATING)));
             // TODO: teleport to a random in-game player
+        } else {
+            e.setJoinMessage(null);
+            e.getPlayer().kickPlayer(Lang.build("messages.server-reloading"));
         }
     }
 }

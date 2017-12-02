@@ -13,6 +13,8 @@ public abstract class ManagedTask implements Runnable {
         this.task = task;
     }
 
+    public abstract void start();
+
     public void cancel() {
         if(task != null) {
             task.cancel();

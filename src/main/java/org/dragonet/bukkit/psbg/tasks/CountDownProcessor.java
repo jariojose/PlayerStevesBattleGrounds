@@ -45,8 +45,8 @@ public class CountDownProcessor implements Runnable, Listener {
             return;
         } else {
             remainingSeconds --;
-            barLine1.setTitle(Lang.build("wait-bar", plugin.getServer().getOnlinePlayers().size(), plugin.getConfig().getInt("max-players")));
-            barLine2.setTitle(Lang.build("time-bar", remainingSeconds));
+            barLine1.setTitle(Lang.build("bars.wait.line1", plugin.getServer().getOnlinePlayers().size(), plugin.getConfig().getInt("max-players")));
+            barLine2.setTitle(Lang.build("bars.wait.line2", remainingSeconds));
             // this is actually showing player numbers, only
             barLine2.setProgress(plugin.getServer().getOnlinePlayers().size() / ((float)plugin.getConfig().getInt("max-players")));
         }
