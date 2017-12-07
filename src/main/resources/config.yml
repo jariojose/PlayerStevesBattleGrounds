@@ -34,5 +34,8 @@ battles:
       # how many ticks to shrink the safe zone?
       shrink:
         times: 4
+        # in ticks
         interval: 6000
         amount: 2
+        # how many seconds to shrink dynamically
+        shrinkTime: 10
